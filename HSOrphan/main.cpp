@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <time.h>
 
+#define POS_YES ((POINT){768, 512})
 #define POS_START ((POINT){1090, 681})
 #define POS_SELF ((POINT){768, 647})
 #define POS_SKILL ((POINT){894, 632})
@@ -16,9 +17,10 @@
 #define POS_SAY5 ((POINT){910, 598})
 #define POS_SAY6 ((POINT){906, 667})
 #define DELAY_START 5
-#define DELAY_SKILL 13
+#define DELAY_SKILL 11
 #define DELAY_SAY 31
 #define DELAY_END_TURN 127
+#define DELAY_YES 37
 
 POINT talks[7] = {
     POS_SAY1, 
@@ -61,6 +63,7 @@ void Right_Click(POINT point){
 int counter_end_turn = 0;
 int counter_start = 0;
 int counter_skill = 0;
+int counter_yes = 0;
 int counter_say[7] = {0};
 void show(){
     printf("ENDTURN:%d\n", counter_end_turn);
@@ -72,6 +75,7 @@ void show(){
     printf("WoW:%d\n", counter_say[4]);
     printf("no:%d\n", counter_say[5]);
     printf("cnm:%d\n", counter_say[6]);
+    printf("yes:%d\n", counter_yes);
 }
 
 void run(){
@@ -103,6 +107,9 @@ void run(){
         }else if(!(timmer % DELAY_START)){
             Left_Click(POS_START);
             counter_start += 1;
+        }else if(!(timmer % DELAY_YES)){
+            Left_Click(POS_YES);
+            counter_yes += 1;
         }
         Sleep(800);
     }
