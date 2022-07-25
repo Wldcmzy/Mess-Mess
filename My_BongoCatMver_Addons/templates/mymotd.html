@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mymotd</title>
+        <style type="text/css">
+            h2{
+                font-size : 30px;
+                color: red;
+				line-height: 5px;
+            }
+			p{
+				font-size : 20px;
+				color: blue;
+				line-height: 5px;
+			}
+			div{
+				margin : 20px;
+			}
+			li{
+				font-size : 20px;
+				color: blue;
+			}
+            </style>
+    </head>
+    <body background="{{ url_for('static', filename = 'dontstop.jpg')}}">
+			<h2>最新版zonemod插件部分特性改动，其他插件均未更改。</h2>
+			<ul>
+				<li>10推开始冷却，15推冷却时间达到最大。</li>
+				<li>Bot吃药会加血,而非吞药,但玩家加入不会给药.</li>
+				<li>允许AI特感刷新</li>
+				<li>AI特感不受轮换机制限制</li>
+				<li>AI特感不受阵营人数限制, 如zonemod 3v3 能刷四只.</li>
+			</ul>
+			
+			<h2>无法正常游玩游戏？</h2>
+			<ul>
+				<p><strong>若聊天框提示形如这样的信息, 请调整lerp: </strong> </p>
+				<p>&lt;Lerp&gt; wldcmzy was moved to spectators for lerp 500.0 </p>
+				<p>&lt;Lerp&gt; Illegal lerp value (min: 0.0, max: 67.0)<p>
+				<p><strong>方法为:</strong></p>
+				<p>按 ` 建打开控制台(前提是已经在设置中启用控制台), 输入以下内容:</p>
+				<p>cl_interp_ratio 0</p>
+				<p>cl_interp 0</p>
+				
+			</ul>
+			
+			<h2>常用命令</h2>
+			<ul>
+				<p>!match 加载插件 !rmatch 解除当前插件</p>
+				<p>!mvp 查询战绩 !bonus 查询分数 !tank 坦克位置</p>
+				<p>!voteboss 投票设置坦克位置</p>
+				<p>!s 旁观 !sepchud 打开旁观菜单</p>
+				<p>!pause 暂停 !unpause解除暂停</p>
+			</ul>
+		<div>
+    </body>
+<html>
