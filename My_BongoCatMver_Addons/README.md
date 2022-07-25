@@ -12,6 +12,10 @@
 
 ## 目前改动
 
-### 2022/07/24
+### 2022/07/24 - fps
 
-为标准模式增加ctrl，shift按键，更适合玩fps游戏， 如CSGO，L4D2
+为标准模式(standard)增加ctrl，shift按键，更适合玩fps游戏， 如CSGO，L4D2
+
+### 2022/07/25 - Celeste
+
+键盘模式(keyboard)修改为蔚蓝按键
