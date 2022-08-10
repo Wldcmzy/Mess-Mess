@@ -35,6 +35,7 @@ def make_one_capture_to_html(folder_name: str) -> None:
 
 
 if __name__ == '__main__':
+    if not os.path.exists(HTML_PATH): os.mkdir(HTML_PATH)
     capture_folders = [each for each in os.listdir(PICTURE_PATH) if each[ : 7] == 'capture']
     for each in capture_folders:
         make_one_capture_to_html(each)

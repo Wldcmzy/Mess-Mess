@@ -35,7 +35,7 @@ class Downloader:
     CAPTURE_NUMBER_LENGTH = 3
 
     # 起始，截至章节
-    CAPTURE_START, CAPTURE_END = 233, 233
+    CAPTURE_START, CAPTURE_END = 1, 232
 
     # 基础漫画地址
     BASE_URL = r'https://omyschool.com/article_detail/152/{addr}/Dr.STONE%20%E7%9F%B3%E7%BA%AA%E5%85%83/{cap}%E8%A9%B1/'
