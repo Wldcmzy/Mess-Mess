@@ -79,7 +79,7 @@ class Downloader:
     def __init__(
         self,
         catalog_url: str = 'http://rimanb.com/book/2407',
-        start_end: tuple[int, int] = (39, 232),
+        start_end: tuple[int, int] = (225, 225),
         image_format: str = '.jpg',
         outpath_root: str = './out/',
         htmlpath: str = './html/',
@@ -287,6 +287,6 @@ class Downloader:
         
 if __name__ == '__main__':
     d = Downloader()
-    #d.run()
-    d.create_htmls()
+    d.run()
+    #d.create_htmls()
 
