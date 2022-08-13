@@ -1,3 +1,4 @@
+from base64 import urlsafe_b64decode
 import requests
 import re
 import bs4
@@ -74,7 +75,7 @@ class Downloader:
 '''
     IMAGE = '    <div id="pages"><img onload="if(this.width >= document.documentElement.clientWidth){{this.width = document.documentElement.clientWidth}}" align="middle" src="{page}"></img></div>\n'
     P = '   <p id="p"><strong>{caricature_name} 第 <span id="capture_number">{p}</span> 话</strong></p>\n'
-    SEP = '<br><br>\n    <hr style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="95%"color=#00FF7F SIZE=5>'
+    SEP = '    <br><br>\n    <hr style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="95%"color=#00FF7F SIZE=5>'
     def __init__(
         self,
         catalog_url: str = 'http://rimanb.com/book/2407',
@@ -82,7 +83,7 @@ class Downloader:
         image_format: str = '.jpg',
         outpath_root: str = './out/',
         htmlpath: str = './html/',
-        caricature_name: str = 'Mr.STONE石纪元',
+        caricature_name: str = 'Dr.STONE石纪元',
         page_number_length:int = 2,
         capture_number_length: int = 3,
         headers: dict = {
@@ -286,6 +287,6 @@ class Downloader:
         
 if __name__ == '__main__':
     d = Downloader()
-    d.run()
+    #d.run()
     d.create_htmls()
 
