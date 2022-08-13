@@ -1,4 +1,3 @@
-from base64 import urlsafe_b64decode
 import requests
 import re
 import bs4
