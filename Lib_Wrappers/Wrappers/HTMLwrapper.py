@@ -1,5 +1,6 @@
 from os import mkdir, listdir
 from os.path import exists, isdir, isfile
+import re
 from .__init__ import logger, try_except_ensure
 
 class Image_HTMLwrapper_Lv2:
@@ -55,13 +56,13 @@ class Image_HTMLwrapper_Lv2:
         prefix_Lv2: 二级目录中可处理文件前缀(针对文件)
         '''
         self.root = root
-        self.html_path = html_path
-        self.html_vital_element = html_vital_element
-        self.html_collection_name = html_collection_name
+        self.html_path = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_path)
+        self.html_vital_element = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_vital_element)
+        self.html_collection_name = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_collection_name)
         self.prefix_LvRoot = prefix_LvRoot
         self.prefix_Lv2 = prefix_Lv2
         self.html_vital_element_P = Image_HTMLwrapper_Lv2.P_VITAL.format(vital_element = self.html_vital_element)
-    
+
     def toreload_parse_diff_element_title(self, folder_name: str) -> str:
         '''
         自定义title标签内容,也作为html文件命名参考
@@ -110,8 +111,10 @@ class Image_HTMLwrapper_Lv2:
             若干图片对应的html语言字符串
             建议以parse_one_Lv2_folder方法的返回值作为参数
         '''
+        name = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', name)
         with open(f'{self.html_path}/{name}.html', 'w', encoding='utf-8') as f:
             f.write(Image_HTMLwrapper_Lv2.HTML.format(title = f'{name}', args = html))
+        logger.log(f'{name}.html创建完成...')
     
     @try_except_ensure
     def create_htmls(self, collection: bool = True):
@@ -133,9 +136,7 @@ class Image_HTMLwrapper_Lv2:
             html += inner_Ptag
             html += self.parse_one_Lv2_folder(each)
             self.create_one_html(title_name, html)
-            logger.log(title_name + 'html创建完成...')
             if collection:
                 totalhtml += html
         if collection:
             self.create_one_html(self.html_collection_name, totalhtml)
-            logger.log(f'{self.html_collection_name}html创建完成...')

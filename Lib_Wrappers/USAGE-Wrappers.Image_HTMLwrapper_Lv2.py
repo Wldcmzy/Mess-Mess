@@ -76,6 +76,7 @@ Image_HTMLwrapper_Lv2使用案例
         (合集html文件指:包含所有可处理二级目录中的所有可处理图片)
         当collection = True, 创建合集html文件
         当collection = False, 不创建合集html文件, 此时构造函数的html_collection_name参数失去意义
+    ii. 不能作为windows系统文件名的字符在命名时会被剔除
 
 7.  一些建议
     i.  html文件中的图片索引根据相对路径, 建议二级目录文件也和脚本文件在同目录, 
@@ -88,8 +89,8 @@ if __name__ == '__main__':
         def __init__(
             self, 
             root: str = './Dr.STONEpages',
-            html_path: str = 'Dr.STONEhtmls',
-            html_vital_element: str = 'Dr.STONE石纪元第 {arg} 话',
+            html_path: str = 'Dr.STONEhtmls:\\/?*:|<>',
+            html_vital_element: str = 'Dr.STONE石纪元<第 {arg} 话>',
             html_collection_name: str = 'Dr.STONE石纪元 全集',
             prefix_LvRoot: str = 'capture', 
             prefix_Lv2: str = 'page',
