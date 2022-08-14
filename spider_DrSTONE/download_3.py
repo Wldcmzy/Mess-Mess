@@ -6,7 +6,7 @@ import time
 import os
 import typing
 
-class MyEasylogger:
+class Easylogger:
     def __init__(self, path: str = './', filename = 'DownloadLOG.log') -> None:
         self.path = path
         self.filename = filename
@@ -29,7 +29,7 @@ class MyEasylogger:
 
     def error(self, data: str, ifprint = True):
         self.makelog(data, 'error', ifprint)
-logger = MyEasylogger()
+logger = Easylogger()
 
 def try_except_ensure(func):
     def _(*args):
