@@ -57,8 +57,10 @@ class Image_HTMLwrapper_Lv2:
         '''
         self.root = root
         self.html_path = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_path)
-        self.html_vital_element = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_vital_element)
-        self.html_collection_name = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_collection_name)
+        # self.html_vital_element = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_vital_element)
+        # self.html_collection_name = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_collection_name)
+        self.html_vital_element = html_vital_element
+        self.html_collection_name = html_collection_name
         self.prefix_LvRoot = prefix_LvRoot
         self.prefix_Lv2 = prefix_Lv2
         self.html_vital_element_P = Image_HTMLwrapper_Lv2.P_VITAL.format(vital_element = self.html_vital_element)

@@ -36,7 +36,7 @@ Image_HTMLwrapper_Lv2使用案例
     (建议结合下方代码构造函数的默认参数理解)
     这些参数均类型均为str
     root:
-        你的二级目录的根目录[路径],结尾不带'/'
+        你的二级目录的根目录[相对路径],结尾不带'/'
     html_path:
         生成html文件的保存目录[名称],不是[路径], 这个目录可以自动创建,不必手动创建
     html_vital_element:
@@ -44,7 +44,7 @@ Image_HTMLwrapper_Lv2使用案例
         这个参数中必须包含字符串'{arg}',这个'{arg}'会根据二级目录名称被格式化为不同的内容以区分不同的html文件
     html_collection_name:
         合集html文件的文件名
-        (合集html文件指:包含所有可处理二级目录中的所有可处理图片)
+        (合集html文件指:包含所有可处理二级目录中的所有可处理图片的html文件)
     prefix_LvRoot:
         一级目录中可处理目录的前缀
     prefix_Lv2:
@@ -69,14 +69,14 @@ Image_HTMLwrapper_Lv2使用案例
     例如,下方代码中,html文件的标题为和title标签为
     [Dr.STONE石纪元第 001 话]
     而html文件中p标签为
-    [Dr.STONE石纪元第 1 话]
+    [Dr.STONE石纪元<第 1 话>]   (见6.ii)
 
 6. 其他内容
     i.  create_htmls方法有一个collection参数,表示是否创建合集html文件,默认为True
-        (合集html文件指:包含所有可处理二级目录中的所有可处理图片)
+        (合集html文件指:包含所有可处理二级目录中的所有可处理图片的html文件)
         当collection = True, 创建合集html文件
         当collection = False, 不创建合集html文件, 此时构造函数的html_collection_name参数失去意义
-    ii. 不能作为windows系统文件名的字符在命名时会被剔除
+    ii. 不能作为windows系统文件名的字符在文件命名时会被剔除
 
 7.  一些建议
     i.  html文件中的图片索引根据相对路径, 建议二级目录文件也和脚本文件在同目录, 
@@ -112,4 +112,32 @@ if __name__ == '__main__':
             return str(int(super().toreload_parse_diff_element_P(folder_name)))
             
     x = DrSTONE()
+    x.create_htmls()
+
+
+# 截止到这里功能案例需求可以实现
+#====================================
+
+
+#====================================
+# 其他示例
+
+    x = DrSTONE(
+        root = './Dr.STONEpages',
+        html_path = 'Dr.STONEhtmls',
+        html_vital_element = 'Dr.STONE石纪元 第 {arg} 话',
+        html_collection_name = ' Dr.STONE石纪元 全集',
+        prefix_LvRoot = 'capture', 
+        prefix_Lv2 = 'page',
+    )
+    x.create_htmls()
+
+    x = DrSTONE(
+        root = './Dr.STONEREBOOTpages',
+        html_path = 'Dr.STONEhtmls',
+        html_vital_element = 'Dr.STONE石纪元外传-Reboot:百夜 第 {arg} 话',
+        html_collection_name = ' Dr.STONE石纪元外传-Reboot:百夜 全集',
+        prefix_LvRoot = 'capture', 
+        prefix_Lv2 = 'page',
+    )
     x.create_htmls()
