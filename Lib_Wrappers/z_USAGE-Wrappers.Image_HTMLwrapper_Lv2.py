@@ -141,3 +141,32 @@ if __name__ == '__main__':
         prefix_Lv2 = 'page',
     )
     x.create_htmls()
+
+
+'''
+方便复制用
+class NewClass(Image_HTMLwrapper_Lv2):
+    def __init__(
+        self, 
+        root: str,
+        html_path: str,
+        html_vital_element: str,
+        html_collection_name,
+        prefix_LvRoot: str, 
+        prefix_Lv2: str,
+    ) -> None:
+        super().__init__(
+            root, 
+            html_path, 
+            html_vital_element, 
+            html_collection_name,
+            prefix_LvRoot,
+            prefix_Lv2
+        )
+    
+    def toreload_parse_diff_element_title(self, folder_name: str) -> str:
+        return super().toreload_parse_diff_element_title(folder_name)
+    
+    def toreload_parse_diff_element_P(self, folder_name: str) -> str:
+        return super().toreload_parse_diff_element_P(folder_name)
+'''

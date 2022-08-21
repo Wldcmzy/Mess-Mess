@@ -1,5 +1,6 @@
 import time
 import os
+import re
 
 class Easylogger:
     def __init__(self, path: str = './', filename = 'EasyLOG.log') -> None:
@@ -35,3 +36,6 @@ def try_except_ensure(func):
                 logger.error(str(type(e)) + '|' + str(e))
             return __(e, *args)
     return _
+
+def remove_invalid_element_in_windows_path(path: str) -> str:
+    return re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', path)
