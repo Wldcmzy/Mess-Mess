@@ -16,12 +16,35 @@ class SpiderX:
         catalog_url: str,
         outpath_name: str = 'out',
         capture_format: str = 'capture{arg}',
-        image_format:str = 'image{arg}.jpg',
+        image_format: str = 'image{arg}.jpg',
         max_capture_number_length: int = 3,
         max_page_number_length: int = 3,
         work_span: tuple[int] = (0, 0),
         concurrency: int = 5,
+        myproxy = None,
+        # headers: dict = {},
     ) -> None:
+        '''
+        catalog_url:
+            目录页链接
+        outpath_name:
+            输出路径名
+        capture_format:
+            章节格式
+        image_format:
+            图片格式
+        max_capture_number_length: 
+            最大章节序号长度
+        max_page_number_length:
+            最大图片序号长度
+        work_span: tuple[int]:
+            爬取章节范围(小, 大)
+            默认爬取所有
+        concurrency:
+            同时进行的任务数量
+        proxies:
+            代理服务器信息
+        '''
         self.catalog_url = catalog_url if catalog_url[ : len(self.DOMIN)] == self.DOMIN else self.DOMIN + catalog_url
         self.outpath_name = outpath_name
         self.check_path(self.outpath_name)
@@ -30,6 +53,7 @@ class SpiderX:
         self.max_capture_number_length = max_capture_number_length
         self.max_page_number_length = max_page_number_length
         self.work_span = work_span
+        self.myproxy = myproxy
 
         self.page_counter = 0
         self.affix = Affix_OnlyZeroExample()
@@ -52,7 +76,7 @@ class SpiderX:
     async def get_html(self, url: str) -> str:
         '''抓取网页html信息'''
         async with self.semaphore:
-            async with self.session.get(url) as response:
+            async with self.session.get(url, proxy = self.myproxy) as response:
                 return await response.text()
 
     async def get_catalog(self) -> dict[int, tuple[str, str]]:
