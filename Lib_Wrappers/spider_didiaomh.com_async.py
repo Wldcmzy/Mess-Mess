@@ -149,11 +149,12 @@ class SpiderX:
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
-    
+
     x = SpiderX(
         'https://www.didiaomh.com/manhua/6500.html',
         outpath_name = '偷星九月天IMAGES',
     )
+    
     try:
         loop.run_until_complete(x.download_all_caputres())
     except Exception as e:
