@@ -150,7 +150,7 @@ if __name__ == '__main__':
     x = SpiderX(
         'https://www.didiaomh.com/manhua/6500.html',
         outpath_name = '偷星九月天IMAGES',
-        work_span=(1, 1),
+        # work_span=(1, 1),
     )
     
     try:
