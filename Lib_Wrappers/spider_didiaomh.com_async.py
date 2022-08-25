@@ -19,7 +19,7 @@ class SpiderX:
         image_format: str = 'image{arg}.jpg',
         max_capture_number_length: int = 3,
         max_page_number_length: int = 3,
-        work_span: tuple[int] = (0, 0),
+        work_span: tuple[int] = (0, -1),
         concurrency: int = 5,
         myproxy = None,
         # headers: dict = {},
@@ -113,8 +113,7 @@ class SpiderX:
             filename = remove_invalid_element_in_windows_path(self.toreload_format_page_name(self.page_counter))
             tasks.append(asyncio.ensure_future(self.download_one_image(url, f'{self.outpath_name}/{foldername}/{filename}')))
         await asyncio.wait(tasks)
-
-            
+    
     async def download_one_capture(self, url: str, foldername: str) -> None:
         '''下载一章图片'''
         self.check_path(f'{self.outpath_name}/{foldername}')
@@ -130,17 +129,15 @@ class SpiderX:
             soup = BeautifulSoup(html)
             await self.download_one_capture_perpage(soup, foldername)
 
-    @try_except_ensure
     async def download_all_caputres(self) -> None:
         '''下载漫画所有图片'''
         catalog = await self.get_catalog()
         work_span_low, work_span_high = self.work_span
-        flag = work_span_high > work_span_low
+        flag = work_span_high >= work_span_low
         logger.debug(f'work span flag:{flag}, low:{work_span_low}, high:{work_span_high}')
+        if flag:
+            catalog = dict(filter(lambda x: x[0] >= work_span_low and x[0] <= work_span_high, catalog.items()))
         for key, value in catalog.items():
-            if flag:
-                if key > work_span_high or key < work_span_low:
-                    continue
             logger.log(f'章节进度:{key}/{len(catalog)}')
             url, capture_title = value
             capture_name = remove_invalid_element_in_windows_path(self.toreload_format_capture_name(key, capture_title))
@@ -153,6 +150,7 @@ if __name__ == '__main__':
     x = SpiderX(
         'https://www.didiaomh.com/manhua/6500.html',
         outpath_name = '偷星九月天IMAGES',
+        work_span=(1, 1),
     )
     
     try:
