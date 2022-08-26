@@ -121,10 +121,10 @@ class SpiderX:
         html = await self.get_html(url)
         soup = BeautifulSoup(html)
         total_pages = int(re.search('第[0-9]+/([0-9]+)页', soup.find('select', class_ = 'selectpage').option.string).group(1))
-        logger.log('html page 1')
+        logger.info('html page 1')
         await self.download_one_capture_perpage(soup, foldername)
         for i in range(2, total_pages + 1):
-            logger.log(f'html page {i}')
+            logger.info(f'html page {i}')
             html = await self.get_html(url.replace('.html', f'?page={i}'))
             soup = BeautifulSoup(html)
             await self.download_one_capture_perpage(soup, foldername)
@@ -138,7 +138,7 @@ class SpiderX:
         if flag:
             catalog = dict(filter(lambda x: x[0] >= work_span_low and x[0] <= work_span_high, catalog.items()))
         for key, value in catalog.items():
-            logger.log(f'章节进度:{key}/{len(catalog)}')
+            logger.info(f'章节进度:{key}/{len(catalog)}')
             url, capture_title = value
             capture_name = remove_invalid_element_in_windows_path(self.toreload_format_capture_name(key, capture_title))
             await self.download_one_capture(url, capture_name)

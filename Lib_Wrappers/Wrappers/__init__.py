@@ -1,31 +1,20 @@
 import time
 import os
 import re
+import logging
 
-class Easylogger:
-    def __init__(self, path: str = './', filename = 'EasyLOG.log') -> None:
-        self.path = path
-        self.filename = filename
-        self.makelog('MyEasylogger类被实例化', 'MyEasylogger', False)
+__handlerF = logging.FileHandler('Easylog.log')
+__handlerF.setLevel(logging.DEBUG)
+__handlerC = logging.StreamHandler()
+__handlerC.setLevel(logging.INFO)
+__formatter = logging.Formatter('%(asctime)s <%(levelname)s>: %(message)s')
+__handlerF.setFormatter(__formatter)
+__handlerC.setFormatter(__formatter)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+logger.addHandler(__handlerF)
+logger.addHandler(__handlerC)
 
-    def makelog(self, data: str, tag: str = 'default', ifprint: bool = True) -> None:
-        if ifprint:
-            print(data)
-        ifexist = os.path.exists(self.filename)
-        with open(self.path + self.filename, 'a+') as f:
-            if not ifexist:
-                f.write(f'==> {str(time.localtime()[ : 6])} | [MyEasylogger] 日志建立\n')
-            f.write(f'==> {str(time.localtime()[ : 6])} | [{tag}] {data}\n')
-
-    def log(self, data: str, ifprint = True):
-        self.makelog(data, 'log', ifprint)
-
-    def debug(self, data: str, ifprint = True):
-        self.makelog(data, 'debug', ifprint)
-
-    def error(self, data: str, ifprint = True):
-        self.makelog(data, 'error', ifprint)
-logger = Easylogger()
 
 def try_except_ensure(func):
     def _(*args):
