@@ -1,0 +1,293 @@
+
+// ==UserScript==
+// @name         程序自动生成的B站成分查看脚本
+// @namespace    ScriptForAutoGenerateBStationElementSearchScript
+// @version      0.1
+// @description  自动生成的B站成分查看脚本, 暂不支持混合标签
+// @author       xulaupuz&nightswan&高贵乡公&脚本使用者
+// @match        https://www.bilibili.com/video/*
+// @match        https://www.bilibili.com/bangumi/play/*
+// @match        https://t.bilibili.com/*
+// @match        https://space.bilibili.com/*
+// @match        https://space.bilibili.com/*
+// @match        https://www.bilibili.com/read/*
+// @icon         https://static.hdslb.com/images/favicon.ico
+// @connect      bilibili.com
+// @grant        GM_xmlhttpRequest
+// @license MIT
+// @run-at document-end
+// ==/UserScript==
+ 
+
+(function () {
+    'use strict';
+    const unknown = new Set()
+ 
+    //成分，可自定义
+    const nor = new Set()
+    const set_文明 = new Set()
+const set_洞口骑士 = new Set()
+const set_蔚蓝 = new Set()
+const set_求批 = new Set()
+
+
+ 
+    //关键词，可自定义
+    const keyword_肝文明 = "肝文明"
+const keyword_玩文明 = "玩文明"
+const keyword_打文明 = "打文明"
+const keyword_文明4 = "文明4"
+const keyword_文明5 = "文明5"
+const keyword_文明6 = "文明6"
+const keyword_文明VI = "文明VI"
+const keyword_统治胜利 = "统治胜利"
+const keyword_科技胜利 = "科技胜利"
+const keyword_文化胜利 = "文化胜利"
+const keyword_外交胜利 = "外交胜利"
+const keyword_分数胜利 = "分数胜利"
+const keyword_宗教胜利 = "宗教胜利"
+const keyword_老秦 = "老秦"
+const keyword_无战飞 = "无战飞"
+const keyword_黄金国 = "黄金国"
+const keyword_空洞骑士 = "空洞骑士"
+const keyword_洞口骑士 = "洞口骑士"
+const keyword_丝之鸽 = "丝之鸽"
+const keyword_丝之歌 = "丝之歌"
+const keyword_苦痛之路 = "苦痛之路"
+const keyword_辐辉 = "辐辉"
+const keyword_佐特 = "佐特"
+const keyword_奎若 = "奎若"
+const keyword_蓝湖 = "蓝湖"
+const keyword_r45 = "r45"
+const keyword_小骑士 = "小骑士"
+const keyword_辐光 = "辐光"
+const keyword_龙牙哥 = "龙牙哥"
+const keyword_龙牙姐 = "龙牙姐"
+const keyword_三螳螂 = "三螳螂"
+const keyword_力量快劈 = "力量快劈"
+const keyword_稳体 = "稳体"
+const keyword_四锁 = "四锁"
+const keyword_遗忘十字路 = "遗忘十字路"
+const keyword_苍绿之径 = "苍绿之径"
+const keyword_真菌荒地 = "真菌荒地"
+const keyword_雾之峡谷 = "雾之峡谷"
+const keyword_古老盆地 = "古老盆地"
+const keyword_皇家水道 = "皇家水道"
+const keyword_王国边缘 = "王国边缘"
+const keyword_乌恩 = "乌恩"
+const keyword_愚人竞技场 = "愚人竞技场"
+const keyword_jjc3 = "jjc3"
+const keyword_亡怒 = "亡怒"
+const keyword_钢魂 = "钢魂"
+const keyword_白色宫殿 = "白色宫殿"
+const keyword_酸冲 = "酸冲"
+const keyword_劈魂 = "劈魂"
+const keyword_骨钉 = "骨钉"
+const keyword_马爹 = "马爹"
+const keyword_毛里克 = "毛里克"
+const keyword_下砸 = "下砸"
+const keyword_劈波 = "劈波"
+const keyword_扭波 = "扭波"
+const keyword_0白 = "0白"
+const keyword_蔚蓝 = "蔚蓝"
+const keyword_玛德琳 = "玛德琳"
+const keyword_celeste = "celeste"
+const keyword_Celeste = "Celeste"
+const keyword_兔子跳 = "兔子跳"
+const keyword_蹭墙跳 = "蹭墙跳"
+const keyword_大跳 = "大跳"
+const keyword_凌波 = "凌波"
+const keyword_无体力上墙 = "无体力上墙"
+const keyword_春三 = "春三"
+const keyword_春四 = "春四"
+const keyword_春五 = "春五"
+const keyword_春3 = "春3"
+const keyword_春4 = "春4"
+const keyword_春5 = "春5"
+const keyword_金草莓 = "金草莓"
+const keyword_求生之路 = "求生之路"
+const keyword_打求 = "打求"
+const keyword_tank = "tank"
+const keyword_witch = "witch"
+const keyword_药抗 = "药抗"
+const keyword_药役 = "药役"
+const keyword_挂边躲牛 = "挂边躲牛"
+const keyword_evo = "evo"
+const keyword_1tc = "1tc"
+const keyword_mayuyu = "mayuyu"
+const keyword_秒妹 = "秒妹"
+const keyword_Anne = "Anne"
+const keyword_diandian = "diandian"
+const keyword_zonemod = "zonemod"
+const keyword_消耗克 = "消耗克"
+const keyword_吸铁 = "吸铁"
+const keyword_hunter = "hunter"
+const keyword_一位喷 = "一位喷"
+const keyword_charger = "charger"
+const keyword_jockey = "jockey"
+const keyword_spitter = "spitter"
+const keyword_smoker = "smoker"
+const keyword_boomer = "boomer"
+const keyword_RBT = "RBT"
+const keyword_VGT = "VGT"
+const keyword_nv = "nv"
+const keyword_pubstar = "pubstar"
+const keyword_amagami = "amagami"
+const keyword_特感 = "特感"
+
+
+    //贴上标签，可自定义
+    const tag_nor = " [普通]"
+    const tag_文明 = " [文明]"
+const tag_洞口骑士 = " [洞口骑士]"
+const tag_蔚蓝 = " [蔚蓝]"
+const tag_求批 = " [求批]"
+
+ 
+ 
+    const blog = 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space?&host_mid='
+    const is_new = document.getElementsByClassName('item goback').length != 0 // 检测是不是新版
+ 
+    //标签颜色，可自定义，默认为B站会员色
+    const tag_nor_Inner = "<b style='color: #11DD77'>" + tag_nor + "</b>"
+    const tag_Inner_文明 = "<b style='color: #c929f5'>" + tag_文明 + "</b>"
+const tag_Inner_洞口骑士 = "<b style='color: #2532e9'>" + tag_洞口骑士 + "</b>"
+const tag_Inner_蔚蓝 = "<b style='color: #ff2e42'>" + tag_蔚蓝 + "</b>"
+const tag_Inner_求批 = "<b style='color: #b93837'>" + tag_求批 + "</b>"
+
+ 
+ 
+    const get_pid = (c) => {
+        if (is_new) {
+            return c.dataset['userId']
+        } else {
+            return c.children[0]['href'].replace(/[^\d]/g, "")
+        }
+    }
+ 
+    const get_comment_list = () => {
+        if (is_new) {
+            let lst = new Set()
+            for (let c of document.getElementsByClassName('user-name')) {
+                lst.add(c)
+            }
+            for (let c of document.getElementsByClassName('sub-user-name')) {
+                lst.add(c)
+            }
+            return lst
+        } else {
+            return document.getElementsByClassName('user')
+        }
+    }
+ 
+ 
+    console.log(is_new)
+    console.log("正常加载")
+ 
+ 
+    let jiance = setInterval(() => {
+        let commentlist = get_comment_list()
+        if (commentlist.length != 0) {
+            // clearInterval(jiance)
+            commentlist.forEach(c => {
+                let pid = get_pid(c)
+
+                
+        if (set_文明.has(pid)) {
+            if (c.textContent.includes(tag_文明) === false) {
+                c.innerHTML += tag_Inner_文明
+            }
+            return
+        }
+    
+        if (set_洞口骑士.has(pid)) {
+            if (c.textContent.includes(tag_洞口骑士) === false) {
+                c.innerHTML += tag_Inner_洞口骑士
+            }
+            return
+        }
+    
+        if (set_蔚蓝.has(pid)) {
+            if (c.textContent.includes(tag_蔚蓝) === false) {
+                c.innerHTML += tag_Inner_蔚蓝
+            }
+            return
+        }
+    
+        if (set_求批.has(pid)) {
+            if (c.textContent.includes(tag_求批) === false) {
+                c.innerHTML += tag_Inner_求批
+            }
+            return
+        }
+    
+
+                if (nor.has(pid)) {
+                    if (c.textContent.includes(tag_nor) === false) {
+                        c.innerHTML += tag_nor_Inner
+                    }
+                    return
+                }
+
+                unknown.add(pid)
+                //console.log(pid)
+                let blogurl = blog + pid
+                // let xhr = new XMLHttpRequest()
+                GM_xmlhttpRequest({
+                    method: "get",
+                    url: blogurl,
+                    data: '',
+                    headers: {
+                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
+                    },
+                    onload: function (res) {
+                        if (res.status === 200) {
+                            //console.log('成功')
+                            let st = JSON.stringify(JSON.parse(res.response).data)
+                            
+                            unknown.delete(pid)
+                            
+                            let tag_flag = false
+
+                            
+    if (st.includes(keyword_肝文明) || st.includes(keyword_玩文明) || st.includes(keyword_打文明) || st.includes(keyword_文明4) || st.includes(keyword_文明5) || st.includes(keyword_文明6) || st.includes(keyword_文明VI) || st.includes(keyword_统治胜利) || st.includes(keyword_科技胜利) || st.includes(keyword_文化胜利) || st.includes(keyword_外交胜利) || st.includes(keyword_分数胜利) || st.includes(keyword_宗教胜利) || st.includes(keyword_老秦) || st.includes(keyword_无战飞) || st.includes(keyword_黄金国)) {
+        c.innerHTML += tag_Inner_文明
+        set_文明.add(pid)
+        tag_flag = true
+    }
+    
+    if (st.includes(keyword_空洞骑士) || st.includes(keyword_洞口骑士) || st.includes(keyword_丝之鸽) || st.includes(keyword_丝之歌) || st.includes(keyword_苦痛之路) || st.includes(keyword_辐辉) || st.includes(keyword_佐特) || st.includes(keyword_奎若) || st.includes(keyword_蓝湖) || st.includes(keyword_r45) || st.includes(keyword_小骑士) || st.includes(keyword_辐光) || st.includes(keyword_龙牙哥) || st.includes(keyword_龙牙姐) || st.includes(keyword_三螳螂) || st.includes(keyword_力量快劈) || st.includes(keyword_稳体) || st.includes(keyword_四锁) || st.includes(keyword_遗忘十字路) || st.includes(keyword_苍绿之径) || st.includes(keyword_真菌荒地) || st.includes(keyword_雾之峡谷) || st.includes(keyword_古老盆地) || st.includes(keyword_皇家水道) || st.includes(keyword_王国边缘) || st.includes(keyword_乌恩) || st.includes(keyword_愚人竞技场) || st.includes(keyword_jjc3) || st.includes(keyword_亡怒) || st.includes(keyword_钢魂) || st.includes(keyword_白色宫殿) || st.includes(keyword_酸冲) || st.includes(keyword_劈魂) || st.includes(keyword_骨钉) || st.includes(keyword_马爹) || st.includes(keyword_毛里克) || st.includes(keyword_下砸) || st.includes(keyword_劈波) || st.includes(keyword_扭波) || st.includes(keyword_0白)) {
+        c.innerHTML += tag_Inner_洞口骑士
+        set_洞口骑士.add(pid)
+        tag_flag = true
+    }
+    
+    if (st.includes(keyword_蔚蓝) || st.includes(keyword_玛德琳) || st.includes(keyword_celeste) || st.includes(keyword_Celeste) || st.includes(keyword_兔子跳) || st.includes(keyword_蹭墙跳) || st.includes(keyword_大跳) || st.includes(keyword_凌波) || st.includes(keyword_无体力上墙) || st.includes(keyword_春三) || st.includes(keyword_春四) || st.includes(keyword_春五) || st.includes(keyword_春3) || st.includes(keyword_春4) || st.includes(keyword_春5) || st.includes(keyword_金草莓)) {
+        c.innerHTML += tag_Inner_蔚蓝
+        set_蔚蓝.add(pid)
+        tag_flag = true
+    }
+    
+    if (st.includes(keyword_求生之路) || st.includes(keyword_打求) || st.includes(keyword_tank) || st.includes(keyword_witch) || st.includes(keyword_药抗) || st.includes(keyword_药役) || st.includes(keyword_挂边躲牛) || st.includes(keyword_evo) || st.includes(keyword_1tc) || st.includes(keyword_mayuyu) || st.includes(keyword_秒妹) || st.includes(keyword_Anne) || st.includes(keyword_diandian) || st.includes(keyword_zonemod) || st.includes(keyword_消耗克) || st.includes(keyword_吸铁) || st.includes(keyword_hunter) || st.includes(keyword_一位喷) || st.includes(keyword_charger) || st.includes(keyword_jockey) || st.includes(keyword_spitter) || st.includes(keyword_smoker) || st.includes(keyword_boomer) || st.includes(keyword_RBT) || st.includes(keyword_VGT) || st.includes(keyword_nv) || st.includes(keyword_pubstar) || st.includes(keyword_amagami) || st.includes(keyword_特感)) {
+        c.innerHTML += tag_Inner_求批
+        set_求批.add(pid)
+        tag_flag = true
+    }
+    
+
+                            //添加纯良标签
+                            if (!tag_flag) {
+                                c.innerHTML += tag_nor_Inner
+                                nor.add(pid)
+                            }
+                        } else {
+                            console.log('失败')
+                            console.log(res)
+                        }
+                    },
+                });
+            });
+        }
+    }, 4000)
+})();
+
