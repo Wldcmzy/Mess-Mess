@@ -86,7 +86,7 @@ class SpiderX:
             { index : (url, capture_title), }
         '''
         html = await self.get_html(self.catalog_url)
-        soup = BeautifulSoup(html) 
+        soup = BeautifulSoup(html, 'lxml') 
         li_tag_list: list[BeautifulSoup] = soup.find('ul', class_ = 'chapter-list clearfix').findAll('li')
         catalog = {}
         for i, each in enumerate(li_tag_list):
@@ -119,14 +119,14 @@ class SpiderX:
         self.check_path(f'{self.outpath_name}/{foldername}')
         self.page_counter = 0
         html = await self.get_html(url)
-        soup = BeautifulSoup(html)
+        soup = BeautifulSoup(html, 'lxml')
         total_pages = int(re.search('第[0-9]+/([0-9]+)页', soup.find('select', class_ = 'selectpage').option.string).group(1))
         logger.info('html page 1')
         await self.download_one_capture_perpage(soup, foldername)
         for i in range(2, total_pages + 1):
             logger.info(f'html page {i}')
             html = await self.get_html(url.replace('.html', f'?page={i}'))
-            soup = BeautifulSoup(html)
+            soup = BeautifulSoup(html, 'lxml')
             await self.download_one_capture_perpage(soup, foldername)
 
     async def download_all_caputres(self) -> None:

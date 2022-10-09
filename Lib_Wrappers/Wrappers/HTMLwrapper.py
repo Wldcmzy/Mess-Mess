@@ -1,7 +1,6 @@
 from os import mkdir, listdir
 from os.path import exists, isdir, isfile
-import re
-from .__init__ import logger, try_except_ensure
+from .__init__ import logger, try_except_ensure, remove_invalid_element_in_windows_path
 
 class Image_HTMLwrapper_Lv2:
     HTML: str = '''
@@ -56,7 +55,7 @@ class Image_HTMLwrapper_Lv2:
         prefix_Lv2: 二级目录中可处理文件前缀(针对文件)
         '''
         self.root = root
-        self.html_path = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_path)
+        self.html_path = remove_invalid_element_in_windows_path(html_path)
         # self.html_vital_element = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_vital_element)
         # self.html_collection_name = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', html_collection_name)
         self.html_vital_element = html_vital_element
@@ -113,7 +112,7 @@ class Image_HTMLwrapper_Lv2:
             若干图片对应的html语言字符串
             建议以parse_one_Lv2_folder方法的返回值作为参数
         '''
-        name = re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', name)
+        name = remove_invalid_element_in_windows_path(name)
         with open(f'{self.html_path}/{name}.html', 'w', encoding='utf-8') as f:
             f.write(Image_HTMLwrapper_Lv2.HTML.format(title = f'{name}', args = html))
         logger.log(f'{name}.html创建完成...')

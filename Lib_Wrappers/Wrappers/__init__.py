@@ -1,5 +1,3 @@
-import time
-import os
 import re
 import logging
 
@@ -26,5 +24,8 @@ def try_except_ensure(func):
             return __(e, *args)
     return _
 
-def remove_invalid_element_in_windows_path(path: str) -> str:
-    return re.sub(r'[\\|/|:|*|?|\"|<|>|\|]','', path)
+def replace_invalid_element_in_windows_path(path_str: str, to_replace: str = '') -> str:
+    return re.sub(r'[\\|/|:|*|?|\"|<|>|\|]', to_replace, path_str)
+
+def remove_invalid_element_in_windows_path(path_str: str) -> str:
+    return replace_invalid_element_in_windows_path(path_str)

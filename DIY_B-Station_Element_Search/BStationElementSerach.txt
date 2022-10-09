@@ -48,7 +48,19 @@ const keyword_分数胜利 = "分数胜利"
 const keyword_宗教胜利 = "宗教胜利"
 const keyword_老秦 = "老秦"
 const keyword_无战飞 = "无战飞"
-const keyword_黄金国 = "黄金国"
+const keyword_核动力圣地 = "核动力圣地"
+const keyword_宗铺 = "宗铺"
+const keyword_商铺 = "商铺"
+const keyword_爆铺 = "爆铺"
+const keyword_精铺 = "精铺"
+const keyword_极光之舞 = "极光之舞"
+const keyword_沙漠民俗 = "沙漠民俗"
+const keyword_主神纪念碑 = "主神纪念碑"
+const keyword_锻造之神 = "锻造之神"
+const keyword_雪特拉 = "雪特拉"
+const keyword_海特拉 = "海特拉"
+const keyword_泛滥平原 = "泛滥平原"
+const keyword_合唱圣歌 = "合唱圣歌"
 const keyword_空洞骑士 = "空洞骑士"
 const keyword_洞口骑士 = "洞口骑士"
 const keyword_丝之鸽 = "丝之鸽"
@@ -89,6 +101,11 @@ const keyword_下砸 = "下砸"
 const keyword_劈波 = "劈波"
 const keyword_扭波 = "扭波"
 const keyword_0白 = "0白"
+const keyword_黑吼 = "黑吼"
+const keyword_梦盾 = "梦盾"
+const keyword_梦之盾 = "梦之盾"
+const keyword_梦钉 = "梦钉"
+const keyword_假骑士 = "假骑士"
 const keyword_蔚蓝 = "蔚蓝"
 const keyword_玛德琳 = "玛德琳"
 const keyword_celeste = "celeste"
@@ -105,6 +122,11 @@ const keyword_春3 = "春3"
 const keyword_春4 = "春4"
 const keyword_春5 = "春5"
 const keyword_金草莓 = "金草莓"
+const keyword_心门 = "心门"
+const keyword_superdash = "superdash"
+const keyword_hyper = "hyper"
+const keyword_连u = "连u"
+const keyword_反泡泡 = "反泡泡"
 const keyword_求生之路 = "求生之路"
 const keyword_打求 = "打求"
 const keyword_tank = "tank"
@@ -120,10 +142,10 @@ const keyword_Anne = "Anne"
 const keyword_diandian = "diandian"
 const keyword_zonemod = "zonemod"
 const keyword_消耗克 = "消耗克"
-const keyword_吸铁 = "吸铁"
 const keyword_hunter = "hunter"
 const keyword_一位喷 = "一位喷"
 const keyword_charger = "charger"
+const keyword_特感 = "特感"
 const keyword_jockey = "jockey"
 const keyword_spitter = "spitter"
 const keyword_smoker = "smoker"
@@ -133,7 +155,23 @@ const keyword_VGT = "VGT"
 const keyword_nv = "nv"
 const keyword_pubstar = "pubstar"
 const keyword_amagami = "amagami"
-const keyword_特感 = "特感"
+const keyword_砍舌 = "砍舌"
+const keyword_脸接25 = "脸接25"
+const keyword_喋血蜃楼 = "喋血蜃楼"
+const keyword_闪电突袭 = "闪电突袭"
+const keyword_死亡中心 = "死亡中心"
+const keyword_黑色狂欢节 = "黑色狂欢节"
+const keyword_黑色嘉年华 = "黑色嘉年华"
+const keyword_c2改 = "c2改"
+const keyword_沼泽激战 = "沼泽激战"
+const keyword_暴风骤雨 = "暴风骤雨"
+const keyword_教区 = "教区"
+const keyword_短暂时刻 = "短暂时刻"
+const keyword_死亡丧钟 = "死亡丧钟"
+const keyword_坠机险途 = "坠机险途"
+const keyword_寂静时分 = "寂静时分"
+const keyword_刺骨寒溪 = "刺骨寒溪"
+const keyword_临死一搏 = "临死一搏"
 
 
     //贴上标签，可自定义
@@ -250,25 +288,25 @@ const tag_Inner_求批 = "<b style='color: #b93837'>" + tag_求批 + "</b>"
                             let tag_flag = false
 
                             
-    if (st.includes(keyword_肝文明) || st.includes(keyword_玩文明) || st.includes(keyword_打文明) || st.includes(keyword_文明4) || st.includes(keyword_文明5) || st.includes(keyword_文明6) || st.includes(keyword_文明VI) || st.includes(keyword_统治胜利) || st.includes(keyword_科技胜利) || st.includes(keyword_文化胜利) || st.includes(keyword_外交胜利) || st.includes(keyword_分数胜利) || st.includes(keyword_宗教胜利) || st.includes(keyword_老秦) || st.includes(keyword_无战飞) || st.includes(keyword_黄金国)) {
+    if (st.includes(keyword_肝文明) || st.includes(keyword_玩文明) || st.includes(keyword_打文明) || st.includes(keyword_文明4) || st.includes(keyword_文明5) || st.includes(keyword_文明6) || st.includes(keyword_文明VI) || st.includes(keyword_统治胜利) || st.includes(keyword_科技胜利) || st.includes(keyword_文化胜利) || st.includes(keyword_外交胜利) || st.includes(keyword_分数胜利) || st.includes(keyword_宗教胜利) || st.includes(keyword_老秦) || st.includes(keyword_无战飞) || st.includes(keyword_核动力圣地) || st.includes(keyword_宗铺) || st.includes(keyword_商铺) || st.includes(keyword_爆铺) || st.includes(keyword_精铺) || st.includes(keyword_极光之舞) || st.includes(keyword_沙漠民俗) || st.includes(keyword_主神纪念碑) || st.includes(keyword_锻造之神) || st.includes(keyword_雪特拉) || st.includes(keyword_海特拉) || st.includes(keyword_泛滥平原) || st.includes(keyword_合唱圣歌)) {
         c.innerHTML += tag_Inner_文明
         set_文明.add(pid)
         tag_flag = true
     }
     
-    if (st.includes(keyword_空洞骑士) || st.includes(keyword_洞口骑士) || st.includes(keyword_丝之鸽) || st.includes(keyword_丝之歌) || st.includes(keyword_苦痛之路) || st.includes(keyword_辐辉) || st.includes(keyword_佐特) || st.includes(keyword_奎若) || st.includes(keyword_蓝湖) || st.includes(keyword_r45) || st.includes(keyword_小骑士) || st.includes(keyword_辐光) || st.includes(keyword_龙牙哥) || st.includes(keyword_龙牙姐) || st.includes(keyword_三螳螂) || st.includes(keyword_力量快劈) || st.includes(keyword_稳体) || st.includes(keyword_四锁) || st.includes(keyword_遗忘十字路) || st.includes(keyword_苍绿之径) || st.includes(keyword_真菌荒地) || st.includes(keyword_雾之峡谷) || st.includes(keyword_古老盆地) || st.includes(keyword_皇家水道) || st.includes(keyword_王国边缘) || st.includes(keyword_乌恩) || st.includes(keyword_愚人竞技场) || st.includes(keyword_jjc3) || st.includes(keyword_亡怒) || st.includes(keyword_钢魂) || st.includes(keyword_白色宫殿) || st.includes(keyword_酸冲) || st.includes(keyword_劈魂) || st.includes(keyword_骨钉) || st.includes(keyword_马爹) || st.includes(keyword_毛里克) || st.includes(keyword_下砸) || st.includes(keyword_劈波) || st.includes(keyword_扭波) || st.includes(keyword_0白)) {
+    if (st.includes(keyword_空洞骑士) || st.includes(keyword_洞口骑士) || st.includes(keyword_丝之鸽) || st.includes(keyword_丝之歌) || st.includes(keyword_苦痛之路) || st.includes(keyword_辐辉) || st.includes(keyword_佐特) || st.includes(keyword_奎若) || st.includes(keyword_蓝湖) || st.includes(keyword_r45) || st.includes(keyword_小骑士) || st.includes(keyword_辐光) || st.includes(keyword_龙牙哥) || st.includes(keyword_龙牙姐) || st.includes(keyword_三螳螂) || st.includes(keyword_力量快劈) || st.includes(keyword_稳体) || st.includes(keyword_四锁) || st.includes(keyword_遗忘十字路) || st.includes(keyword_苍绿之径) || st.includes(keyword_真菌荒地) || st.includes(keyword_雾之峡谷) || st.includes(keyword_古老盆地) || st.includes(keyword_皇家水道) || st.includes(keyword_王国边缘) || st.includes(keyword_乌恩) || st.includes(keyword_愚人竞技场) || st.includes(keyword_jjc3) || st.includes(keyword_亡怒) || st.includes(keyword_钢魂) || st.includes(keyword_白色宫殿) || st.includes(keyword_酸冲) || st.includes(keyword_劈魂) || st.includes(keyword_骨钉) || st.includes(keyword_马爹) || st.includes(keyword_毛里克) || st.includes(keyword_下砸) || st.includes(keyword_劈波) || st.includes(keyword_扭波) || st.includes(keyword_0白) || st.includes(keyword_黑吼) || st.includes(keyword_梦盾) || st.includes(keyword_梦之盾) || st.includes(keyword_梦钉) || st.includes(keyword_假骑士)) {
         c.innerHTML += tag_Inner_洞口骑士
         set_洞口骑士.add(pid)
         tag_flag = true
     }
     
-    if (st.includes(keyword_蔚蓝) || st.includes(keyword_玛德琳) || st.includes(keyword_celeste) || st.includes(keyword_Celeste) || st.includes(keyword_兔子跳) || st.includes(keyword_蹭墙跳) || st.includes(keyword_大跳) || st.includes(keyword_凌波) || st.includes(keyword_无体力上墙) || st.includes(keyword_春三) || st.includes(keyword_春四) || st.includes(keyword_春五) || st.includes(keyword_春3) || st.includes(keyword_春4) || st.includes(keyword_春5) || st.includes(keyword_金草莓)) {
+    if (st.includes(keyword_蔚蓝) || st.includes(keyword_玛德琳) || st.includes(keyword_celeste) || st.includes(keyword_Celeste) || st.includes(keyword_兔子跳) || st.includes(keyword_蹭墙跳) || st.includes(keyword_大跳) || st.includes(keyword_凌波) || st.includes(keyword_无体力上墙) || st.includes(keyword_春三) || st.includes(keyword_春四) || st.includes(keyword_春五) || st.includes(keyword_春3) || st.includes(keyword_春4) || st.includes(keyword_春5) || st.includes(keyword_金草莓) || st.includes(keyword_心门) || st.includes(keyword_superdash) || st.includes(keyword_hyper) || st.includes(keyword_连u) || st.includes(keyword_反泡泡)) {
         c.innerHTML += tag_Inner_蔚蓝
         set_蔚蓝.add(pid)
         tag_flag = true
     }
     
-    if (st.includes(keyword_求生之路) || st.includes(keyword_打求) || st.includes(keyword_tank) || st.includes(keyword_witch) || st.includes(keyword_药抗) || st.includes(keyword_药役) || st.includes(keyword_挂边躲牛) || st.includes(keyword_evo) || st.includes(keyword_1tc) || st.includes(keyword_mayuyu) || st.includes(keyword_秒妹) || st.includes(keyword_Anne) || st.includes(keyword_diandian) || st.includes(keyword_zonemod) || st.includes(keyword_消耗克) || st.includes(keyword_吸铁) || st.includes(keyword_hunter) || st.includes(keyword_一位喷) || st.includes(keyword_charger) || st.includes(keyword_jockey) || st.includes(keyword_spitter) || st.includes(keyword_smoker) || st.includes(keyword_boomer) || st.includes(keyword_RBT) || st.includes(keyword_VGT) || st.includes(keyword_nv) || st.includes(keyword_pubstar) || st.includes(keyword_amagami) || st.includes(keyword_特感)) {
+    if (st.includes(keyword_求生之路) || st.includes(keyword_打求) || st.includes(keyword_tank) || st.includes(keyword_witch) || st.includes(keyword_药抗) || st.includes(keyword_药役) || st.includes(keyword_挂边躲牛) || st.includes(keyword_evo) || st.includes(keyword_1tc) || st.includes(keyword_mayuyu) || st.includes(keyword_秒妹) || st.includes(keyword_Anne) || st.includes(keyword_diandian) || st.includes(keyword_zonemod) || st.includes(keyword_消耗克) || st.includes(keyword_hunter) || st.includes(keyword_一位喷) || st.includes(keyword_charger) || st.includes(keyword_特感) || st.includes(keyword_jockey) || st.includes(keyword_spitter) || st.includes(keyword_smoker) || st.includes(keyword_boomer) || st.includes(keyword_RBT) || st.includes(keyword_VGT) || st.includes(keyword_nv) || st.includes(keyword_pubstar) || st.includes(keyword_amagami) || st.includes(keyword_砍舌) || st.includes(keyword_脸接25) || st.includes(keyword_喋血蜃楼) || st.includes(keyword_闪电突袭) || st.includes(keyword_死亡中心) || st.includes(keyword_黑色狂欢节) || st.includes(keyword_黑色嘉年华) || st.includes(keyword_c2改) || st.includes(keyword_沼泽激战) || st.includes(keyword_暴风骤雨) || st.includes(keyword_教区) || st.includes(keyword_短暂时刻) || st.includes(keyword_死亡丧钟) || st.includes(keyword_坠机险途) || st.includes(keyword_寂静时分) || st.includes(keyword_刺骨寒溪) || st.includes(keyword_临死一搏)) {
         c.innerHTML += tag_Inner_求批
         set_求批.add(pid)
         tag_flag = true
