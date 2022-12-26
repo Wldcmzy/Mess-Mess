@@ -1,6 +1,7 @@
 from typing import Any, Union
 
 REFRESH_SEP = 4000
+FILENAME = 'BStationElementSerach.txt'
 
 mydict: dict[str, dict[str, Union[list[str], str]]] = {
     '文明': {
@@ -270,7 +271,8 @@ def install_tags() -> str:
     return _
         
 def run() -> None:
-    with open('BStationElementSerach.txt', 'w', encoding='utf-8') as f:
+    global FILENAME
+    with open(FILENAME, 'w', encoding='utf-8') as f:
         f.write(install_tags())
 
 if __name__ == '__main__':
