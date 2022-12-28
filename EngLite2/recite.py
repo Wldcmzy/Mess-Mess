@@ -2,10 +2,10 @@ from tkinter import *
 from myutils.EngLiteBase import Render, Word
 
 # 随机选择单词的等级范围[0 - LEVEL]
-LEVEL = 0
+LEVEL = 2
 
 #随机选择单词的数量
-NUMBER = 2
+NUMBER = 20
 
 #使用哪个数据库
 DBNAME = 'civi.db'
@@ -21,6 +21,7 @@ FG_EN = 'brown'
 FG_PRON = 'blue'
 FG_CN = 'red'
 FG_COMBO = 'black'
+FG_COUNTER = 'green'
 
 if __name__ == '__main__':
     word_service, word_reservists = None, None
@@ -43,12 +44,26 @@ if __name__ == '__main__':
     combo_shadow = StringVar()
     show_mod = 1
 
-    en.set(f'点击开始背单词~\n\n 会就点左键, 不会就点右键~\n\n本次为您挑选了{NUMBER}个单词~')
+    counter = StringVar()
+
+    if len(render.wordlist) == NUMBER:
+        ini = f'点击开始背单词~\n\n 会就点左键, 不会就点右键~\n\n本次为您挑选了{NUMBER}个单词~'
+    else:
+        ini = f'点击开始背单词~\n\n 会就点左键, 不会就点右键~\n\n符合条件的单词不足{NUMBER}个, 只有{len(render.wordlist)}个乐~'
+    en.set(ini)
+
+    lb_counter = Label(frame
+        , textvariable = counter
+        ,padx = PADX ,pady = PADY
+        ,fg = FG_COUNTER
+        ,font=('',20)
+    )
+    lb_counter.grid(row = 2, column = 5)
 
     lb_en = Label(frame
             , textvariable = en
             ,padx = PADX ,pady = PADY
-            ,fg = 'brown'
+            ,fg = FG_EN
             ,font=('',50)
     )
     lb_en.grid(row = 5, column = 5)
@@ -122,11 +137,19 @@ if __name__ == '__main__':
         else:
             render.hasWrong(word_service)
 
+    def autoset_counter():
+        global render, word_reservists, word_service
+        left = len(render.wordlist)
+        if word_reservists != None: left += 1
+        if word_service != None: left += 1
+        counter.set(f'剩余:{left}')
+
     def autochange(event, yes: bool):
         if show_mod:
             user_reply(yes)
             change_word()
         exchange_show_mod()
+        autoset_counter()
         
     
     root.bind('<Button-1>', lambda event : autochange(event, True))
