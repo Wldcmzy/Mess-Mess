@@ -8,6 +8,7 @@ import tqdm
 import re
 import time
 import numpy
+from typing import Optional
 
 def opendb(path: Path) -> sqlite3.Connection:
     if not path.exists():
@@ -26,20 +27,24 @@ def opendb(path: Path) -> sqlite3.Connection:
         conn = sqlite3.connect(path)   
     return conn
     
-def query(searcher: Search_words, word: str) -> tuple[str]:
-    res = searcher.Simple_search(word)
+def query(searcher: Search_words, word: str) -> Optional[tuple[str]]:
+    try:
+        res = searcher.Simple_search(word)
 
-    en = res['Word']
-    pron = ''
-    if res['pronounce'] != []:
-        if len(res['pronounce']) <= 1:
-            pron = f"{res['pronounce'][0]}"
-        else:
-            pron = f"{res['pronounce'][0]} 英 & {res['pronounce'][1]} 美"
-    cn = re.sub(' +', ' ', str(list(_ for _ in res['Simple-meaning']))[1 : -1].replace(',', '\n').replace('\'', '')).replace('\n ', '\n')
-    combo = re.sub(' +', ' ', str(list(_[0] + re.sub('[\n| ]', '', _[1]) for _ in res['Phrase']))[1 : -1].replace(',', '\n').replace('\'', '')).replace('\n ', '\n')
+        en = res['Word']
+        pron = ''
+        if res['pronounce'] != []:
+            if len(res['pronounce']) <= 1:
+                pron = f"{res['pronounce'][0]}"
+            else:
+                pron = f"{res['pronounce'][0]} 英 & {res['pronounce'][1]} 美"
+        cn = re.sub(' +', ' ', str(list(_ for _ in res['Simple-meaning']))[1 : -1].replace(',', '\n').replace('\'', '')).replace('\n ', '\n')
+        combo = re.sub(' +', ' ', str(list(_[0] + re.sub('[\n| ]', '', _[1]) for _ in res['Phrase']))[1 : -1].replace(',', '\n').replace('\'', '')).replace('\n ', '\n')
 
-    return en, cn, pron, combo
+        return en, cn, pron, combo
+    except Exception as e:
+        logger.error(f'{type(e)}|{str(e)}|word:{word}')   
+        return None
 
 def addone(
     cursor: sqlite3.Cursor, 
@@ -66,7 +71,9 @@ def addmany_BySearch(conn: sqlite3.Connection, wordlist: list[str], delay: int =
     cursor = conn.cursor()
     for i in tqdm.tqdm(range(len(wordlist))):
         word = wordlist[i]
-        en, cn, pron, combo = query(searcher, word)
+        x = query(searcher, word)
+        if x == None: continue
+        en, cn, pron, combo = x
         addone(cursor, en, cn, pron, combo, 0, 0)
         conn.commit()
         time.sleep(delay)

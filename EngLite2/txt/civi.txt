@@ -1,58 +1,88 @@
-commercial
-hub
-aurora
-divine
-idol
-religious
-festival
-initiation
-rite
-initiation rites
-craftsmen
-patron
-goddess
-spark
-cliff
-furs
-antarctic
-award
-plaza
-district
-conscription
-conscript
-corvee
-state
-incense
-era
+strategic
+melee
+ranged
+condemn
+boat
+shrine
+holy
+horse
+sheep
+deer
+mine
 ancient
-classical
-mining
-opportunity
-archery
-caravansary
-wine
-marsh
-astrology
-cotton
-political
-philosophy
-masonry
-diamond
-oligarchy
-autocracy
-cracy
-irrigation
-plantation
-currency
-canal
-maneuver
-gypsum
-stable
-meteor
+batter
+ram
+battering ram
+iron
+camp
+fish
+district
+market
+industry
+horseman
+lumber
+lumber mill
+catapult
+mounted
+mounted man at arms
+man at arms
+horseback
+horseback riding
+celestial navigation
+wheel
 bronze
-barrack
-encampment
-spearman
+irrigation
+sailing
+embark
+bonus
+harvest
+wood
+reveal
+stone
+trader
+movement
+shipbuilding
+discipline
+survey
+urban planning
+urban
+policy
+agoge
+joint war
+creation
+surveyor
+inspiration
+revelation
+grove
+preserve
+envoy
+entertainment complex
+complex
+classical republic
+square
+literary
+tradition
+slot
+league
+diplomatic
+charismatic
+mysticism
 recreation
-entertainment
-arena
+declare
+protectorate
+reconquest
+natural
+praetorium
+retainer
+prestige
+civil
+monarchy
+monarch
+divine right
+civil service
+service
+gothic
+architecture
+gothic architecture
+chivalry
+quadrireme

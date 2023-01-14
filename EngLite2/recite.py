@@ -2,10 +2,10 @@ from tkinter import *
 from myutils.EngLiteBase import Render, Word
 
 # 随机选择单词的等级范围[0 - LEVEL]
-LEVEL = 2
+LEVEL = 4
 
 #随机选择单词的数量
-NUMBER = 20
+NUMBER = 50
 
 #使用哪个数据库
 DBNAME = 'civi.db'
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     )
     lb_combo.grid(row = 20, column = 5)
 
-    def set_word_preview(word: Word):
+    def set_word_view(word: Word):
         cen, ccn, cpron, ccombo = word.enter_cut()
         en.set(cen)
         cn.set(ccn)
@@ -123,9 +123,9 @@ if __name__ == '__main__':
         word_reservists = render.choice()
 
         if word_service == None:
-            set_word_preview(Word(('已经没有单词了~', '', '', '', None, None)))
+            set_word_view(Word(('已经没有单词了~', '', '', '', None, None)))
         else:
-            set_word_preview(word_service)
+            set_word_view(word_service)
             print(word_service.en, f'level={word_service.level} E={word_service.e}')
 
 

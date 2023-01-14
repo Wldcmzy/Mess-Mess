@@ -105,5 +105,6 @@ class Render:
         word.errortimes += 1
         word.repeat = 0
         self.wordlist.append(word)
+        print(f'set {word.en} level={word.level}, E={word.e}')
     
 
