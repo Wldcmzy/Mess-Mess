@@ -4,3 +4,13 @@
 2023-01-14 13:11:09,136 <ERROR>: <class 'Exception'>|单词mounted man at arms无中文释义, 无音标=True, 无组合=False
 2023-01-14 13:11:39,488 <ERROR>: <class 'Exception'>|单词joint war无中文释义, 无音标=True, 无组合=False
 
+2023-01-27 15:58:26,861 <ERROR>: <class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 15:58:27,971 <ERROR>: <class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 15:58:29,129 <ERROR>: <class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 15:58:30,277 <ERROR>: <class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 15:58:31,432 <ERROR>: <class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 15:58:32,561 <ERROR>: <class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 16:00:05,945 <ERROR>: <at:database.sqlApi.addone>|<class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 16:00:07,050 <ERROR>: <at:database.sqlApi.addone>|<class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 16:00:08,224 <ERROR>: <at:database.sqlApi.addone>|<class 'sqlite3.OperationalError'>|7 values for 6 columns
+2023-01-27 16:00:37,369 <ERROR>: <class 'AttributeError'>|'NoneType' object has no attribute 'replace'|word:sheep

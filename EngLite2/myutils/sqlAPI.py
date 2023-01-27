@@ -21,7 +21,8 @@ def opendb(path: Path) -> sqlite3.Connection:
             PRONOUNCE    TEXT       ,
             COMBO        TEXT       ,
             LEVEL        INTEGER    ,
-            E            INTEGER    );
+            E            INTEGER    ,
+            FLAG         INTEGER    );
         ''')
     else:
         conn = sqlite3.connect(path)   
@@ -54,17 +55,17 @@ def addone(
     combo: str,
     level: int,
     exponential: int,
-
+    flag: int,
     ) -> None:
     try:
         if cn == '':
             raise Exception(f'单词{en}无中文释义, 无音标={pronounce == ""}, 无组合={combo == ""}')
         cursor.execute(f'''
-            INSERT INTO WORD (EN, CN, PRONOUNCE, COMBO, LEVEL, E)
-            VALUES ("{en}", "{cn}", "{pronounce}", "{combo}", "{level}", "{exponential}");
+            INSERT INTO WORD (EN, CN, PRONOUNCE, COMBO, LEVEL, E, FLAG)
+            VALUES ("{en}", "{cn}", "{pronounce}", "{combo}", "{level}", "{exponential}", "{flag}");
         ''')
     except Exception as e:
-        logger.error(f'{type(e)}|{str(e)}')
+        logger.error(f'<at:database.sqlApi.addone>|{type(e)}|{str(e)}')
 
 def addmany_BySearch(conn: sqlite3.Connection, wordlist: list[str], delay: int = 1) -> None:
     searcher=Search_words()
@@ -74,7 +75,7 @@ def addmany_BySearch(conn: sqlite3.Connection, wordlist: list[str], delay: int =
         x = query(searcher, word)
         if x == None: continue
         en, cn, pron, combo = x
-        addone(cursor, en, cn, pron, combo, 0, 0)
+        addone(cursor, en, cn, pron, combo, 0, 0, 0)
         conn.commit()
         time.sleep(delay)
     
@@ -99,8 +100,8 @@ def modifyone(conn: sqlite3.Connection, word: str, level: int, exponential: int)
     conn.commit()
 
 def reset(conn: sqlite3.Connection):
-    print('reset LEVEL, E to 0')
+    print('reset LEVEL, E, FLAG to 0')
     cur = conn.cursor()
-    sql = 'update WORD set LEVEL = 0, E = 0'
+    sql = 'update WORD set LEVEL = 0, E = 0, FLAG = 0'
     cur.execute(sql)
     conn.commit()
